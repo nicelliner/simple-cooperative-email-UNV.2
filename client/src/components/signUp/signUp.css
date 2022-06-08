@@ -1,0 +1,33 @@
+.signUp-section {
+  margin: 20em auto;
+  padding: 40px;
+  max-width: 400px;
+  max-height: 300px;
+}
+
+.signUp-section > * {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.signUp-section > * > * > input {
+  margin: 4px 10px;
+}
+
+.signUp-buttons {
+  justify-content: center;
+  margin-top: 25px;
+  margin-right: 10px;
+}
+
+.signUp-buttons > button {
+  margin: 0px 48px;
+  height: 25px;
+  width: 100px;
+}
+
+.signUp-buttons > button:hover {
+  background: #fd4d66;
+}

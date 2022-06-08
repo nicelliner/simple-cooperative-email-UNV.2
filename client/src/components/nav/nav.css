@@ -1,0 +1,26 @@
+nav {
+  max-width: 1000px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  border-bottom: 1px solid gray;
+  text-align: center;
+}
+
+nav > button {
+  color: black;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 0px 50px 10px 50px;
+}
+
+nav > button:hover {
+  background: #fd4d66;
+  opacity: 0.8;
+}
+
+#sendMessage:hover {
+  background: rgb(66, 201, 66);
+}

@@ -1,0 +1,31 @@
+.logIn-section {
+  margin: 20em auto;
+  width: 20em;
+  height: 14em;
+}
+
+.logIn-inputs {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logIn-inputs > * {
+  margin-top: 8px;
+}
+
+.logIn-buttons {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.logIn-buttons > button {
+  margin: 0px 10px;
+  height: 25px;
+  width: 100px;
+}
+
+.logIn-buttons > button:hover {
+  background: #fd4d66;
+} 

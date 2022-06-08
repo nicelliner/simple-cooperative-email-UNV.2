@@ -1,0 +1,48 @@
+@import url("./components/logIn/logIn.css");
+@import url("./components/signUp/signUp.css");
+@import url("./components/nav/nav.css");
+@import url("./components/createMessage/createMessage.css");
+@import url("./components/messagesList/message.css");
+
+@font-face {
+  font-family: "Roboto Regular";
+  src: url("./src/fonts/Roboto-Regular.ttf");
+}
+
+/*  ALL */
+
+body {
+  font-family: "Roboto Regular", sans-serif;
+}
+
+button {
+  border: 1px solid gray;
+  border-radius: 10px;
+  transition: background 0.2s linear;
+  transition-delay: 0.1s, 0.1s;
+}
+
+section,
+nav > button,
+.message {
+  border: darkgrey 2px solid;
+  border-radius: 10px;
+  -webkit-box-shadow: 10px 9px 11px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 9px 11px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 10px 9px 11px 0px rgba(34, 60, 80, 0.2);
+}
+
+input, textarea {
+  border: 1px solid gray;
+  border-radius: 6px;
+}
+
+/* EmptyMessages */
+
+.empty-Messages {
+  margin-top: 100px;
+  text-align: center;
+  -webkit-text-shadow: 10px 9px 11px 0px rgba(34, 60, 80, 0.2);
+  -moz-text-shadow: 0px 9px 11px 0px rgba(34, 60, 80, 0.2);
+  text-shadow: 1px 2px 2px rgba(206,182,152,0.82);
+}

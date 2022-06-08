@@ -1,0 +1,36 @@
+.create-message {
+  max-width: 800px;
+  margin: 8em auto;
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+}
+
+.create-message > input {
+  max-width: 200px;
+  height: 18px;  
+}
+
+.create-message > input, 
+.create-message > textarea {
+  border-radius: 10px; 
+}
+
+.create-message > * {
+  margin-top: 10px;
+}
+
+.create-message > label {
+  margin-left: 30px;
+}
+
+.create-message > button {
+  width: 150px;
+  height: 30px;
+  margin: 20px auto;
+}
+
+.create-message > button:hover {
+  background: rgb(66, 201, 66);
+}

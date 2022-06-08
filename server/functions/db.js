@@ -1,24 +1,53 @@
 import fs from 'fs'
 
-export const addMessage = (newMessage, MESSAGES_BASE) => {
-    const messages = JSON.parse(fs.readFileSync(MESSAGES_BASE)).push(newMessage)
+import { USERS_BASE, MESSAGES_BASE } from './const.js'
+
+export const addMessage = (newMessage) => {
+    const messages = JSON.parse(fs.readFileSync(MESSAGES_BASE))
+    messages.push(newMessage)
     return fs.writeFileSync(MESSAGES_BASE, JSON.stringify(messages))
 }
 
-export const receivedMessages = (recipient, MESSAGES_BASE, resultMessages = []) => {  
+export const receivedMessages = (recipient, resultMessages = []) => {  
     const messages = JSON.parse(fs.readFileSync(MESSAGES_BASE)) 
     for (let message of messages) 
-        if ( message.recipient === recipient ) 
+        if ( message.recipient === recipient.login ) 
             resultMessages.push(message)  
     return resultMessages
 }
 
-export const sentMassages = (sender, MESSAGES_BASE, resultMessages = []) => {  
+export const sentMassages = (sender, resultMessages = []) => {  
     const messages = JSON.parse(fs.readFileSync(MESSAGES_BASE)) 
     for (let message of messages) 
-        if (message.sender === sender ) 
+        if (message.sender === sender.login ) 
             resultMessages.push(message)  
     return resultMessages
+}
+
+export const readMessages = (user, resultMessages = []) => {
+    const messages = receivedMessages(user)
+    for (let message of messages) 
+        if ( message.read === true ) 
+            resultMessages.push(message)  
+    return resultMessages
+}
+
+export const deleteMessage = (messageID) => {
+    const messages = JSON.parse(fs.readFileSync(MESSAGES_BASE)) 
+    for (let i = 0; i < messages.length; i++) {
+        if (messages[i]._id === messageID ) 
+            messages.splice(i, 1)
+    }
+    return fs.writeFileSync(MESSAGES_BASE, JSON.stringify(messages))
+}
+
+export const readMessage = (messageID) => {
+    const messages = JSON.parse(fs.readFileSync(MESSAGES_BASE)) 
+    for (let i = 0; i < messages.length; i++) {
+        if (messages[i]._id === messageID ) 
+            messages[i].read = true
+    }
+    return fs.writeFileSync(MESSAGES_BASE, JSON.stringify(messages))
 }
 
 export const ObjectId = () => {
@@ -28,12 +57,14 @@ export const ObjectId = () => {
     }).toLowerCase()
 }
 
-export const addUser = (newUser, USERS_BASE) => {
-    const users = JSON.parse(fs.readFileSync(USERS_BASE)).push(newUser)
+export const addUser = (newUser) => {
+    if (regCheckUser(newUser, USERS_BASE) === false) return false
+    const users = JSON.parse(fs.readFileSync(USERS_BASE))
+    users.push(newUser)
     return fs.writeFileSync(USERS_BASE, JSON.stringify(users))
 }
 
-export const regCheckUser = (newUser, USERS_BASE) => {
+export const regCheckUser = (newUser) => {
     const users = JSON.parse(fs.readFileSync(USERS_BASE))
     for (let user of users) 
         if (user.login === newUser.login ) 
@@ -41,34 +72,11 @@ export const regCheckUser = (newUser, USERS_BASE) => {
     return true
 }
 
-export const logCheckUser = (User, USERS_BASE) => {
+export const logCheckUser = (logUser) => {
     const users = JSON.parse(fs.readFileSync(USERS_BASE))
     for (let user of users) 
-        if (user.login === User.login ) 
-            return true 
+        if (user.login === logUser.login ) 
+            return user.password === logUser.password ? 
+            receivedMessages(logUser) : false
     return false
 }
-
-const testUser = {
-    "name": "Vova",
-    "surname": "Herobrin",
-    "login": "dropit@you.ru",
-    "password": "qwerty"
-}
-
-
-const testMessage = {
-    sender: 'dram@flop.ru',
-    recipient: 'feral@drop.ru',
-    title: 'ferfecto',
-    content: 'fdspjgpsjgp for Trello',
-    read: false,
-    time: '12 May Monday 12:22:54',
-    _id: "'9058430gjfd'dfng'n"
-}
-
-// console.log(ObjectId())
-// regUser(testUser, USERS_BASE)
-// console.log(JSON.parse(fs.readFileSync(USERS_BASE)))
-// console.log(receivedMessages('dram@flop.ru', MESSAGES_BASE))
-// console.log(sentMassages('dram@flop.ru', MESSAGES_BASE))

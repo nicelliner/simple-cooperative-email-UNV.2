@@ -1,0 +1,34 @@
+.message {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 10px 40px 20px 40px;
+  border-radius: 20px;
+}
+
+.message-date {
+  text-align: right;
+}
+
+.message-buttons {
+  text-align: right;
+  max-width: 240px;
+  margin-left: auto;
+  margin-right: 0px;
+}
+
+.message-buttons > button {
+  margin: 15px 8px 0px 0px;
+  height: 25px;
+}
+
+.mark-message:hover {
+  background-color: #d7d7d7;
+}
+
+.reply-message:hover {
+  background-color: rgb(66, 201, 66);
+}
+
+.delete-message:hover {
+  background-color: #fd4d66;
+}
